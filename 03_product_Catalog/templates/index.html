@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Catalog</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Product Catalog</h1>
+        <a href="{{ url_for('create') }}" class="btn">Add New Product</a>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul class="flash-messages">
+                    {% for category, message in messages %}
+                        <li class="{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        <h2>All Products</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th><th>Name</th><th>Price</th><th>In Stock</th><th>Description</th><th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                <tr>
+                    <td>{{ product.id }}</td>
+                    <td>{{ product.name }}</td>
+                    <td>${{ "%.2f"|format(product.price) }}</td>
+                    <td>{{ "Yes" if product.in_stock else "No" }}</td>
+                    <td>{{ product.description }}</td>
+                    <td>
+                        <a href="{{ url_for('edit', id=product.id) }}" class="btn">Edit</a>
+                        <a href="{{ url_for('delete', id=product.id) }}" class="btn delete">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h2>In-Stock Products</h2>
+        <ul>
+            {% for p in in_stock %}
+                <li>{{ p.name }} - ${{ "%.2f"|format(p.price) }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
