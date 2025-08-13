@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Blog</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Blog Posts</h1>
+    <a href="{{ url_for('create') }}">Add New Post</a>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="{{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <ul>
+    {% for post in posts %}
+        <li>
+            <h2>{{ post.title }}</h2>
+            <p>{{ post.content }}</p>
+            <small>By {{ post.author }} on {{ post.created_at.strftime('%Y-%m-%d') }}</small>
+            <br>
+            <a href="{{ url_for('edit', id=post.id) }}">Edit</a> |
+            <a href="{{ url_for('delete', id=post.id) }}">Delete</a>
+        </li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
