@@ -33,7 +33,7 @@
                 <tr>
                     <td>{{ product.id }}</td>
                     <td>{{ product.name }}</td>
-                    <td>${{ "%.2f"|format(product.price) }}</td>
+                    <td>₹{{ "%.2f"|format(product.price) }}</td>
                     <td>{{ "Yes" if product.in_stock else "No" }}</td>
                     <td>{{ product.description }}</td>
                     <td>
@@ -48,7 +48,7 @@
         <h2>In-Stock Products</h2>
         <ul>
             {% for p in in_stock %}
-                <li>{{ p.name }} - ${{ "%.2f"|format(p.price) }}</li>
+                <li>{{ p.name }} - ₹{{ "%.2f"|format(p.price) }}</li>
             {% endfor %}
         </ul>
     </div>

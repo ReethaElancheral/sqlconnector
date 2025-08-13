@@ -1,8 +1,15 @@
 import os
 
 class Config:
-    SECRET_KEY = os.environ.get('SECRET_KEY', 'product_secret_key')
+    # Flask secret key (used for sessions and flash messages)
+    SECRET_KEY = os.environ.get('SECRET_KEY', 'mysecret')
 
-    # MySQL connection using environment variables
-    SQLALCHEMY_DATABASE_URI = f"mysql+pymysql://{os.environ['DB_USER']}:{os.environ['DB_PASSWORD']}@{os.environ['DB_HOST']}/{os.environ['DB_NAME']}"
+    # SQLAlchemy database URI
+    # Use environment variable DATABASE_URL if set (for Render cloud)
+    # Otherwise, fallback to local MySQL for testing
+    SQLALCHEMY_DATABASE_URI = os.environ.get(
+        'DATABASE_URL',
+        'mysql+pymysql://root:1234@localhost/product_db'
+    )
+
     SQLALCHEMY_TRACK_MODIFICATIONS = False
