@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Vote{% endblock %}
+
+{% block content %}
+<h2>Cast Your Vote</h2>
+<form method="POST">
+    {{ vote_form.hidden_tag() }}
+    <div class="mb-3">
+        {{ vote_form.voter_name.label(class="form-label") }}
+        {{ vote_form.voter_name(class="form-control") }}
+    </div>
+    <div class="mb-3">
+        {{ vote_form.candidate_id.label(class="form-label") }}
+        {{ vote_form.candidate_id(class="form-select") }}
+    </div>
+    <button type="submit" class="btn btn-success">{{ vote_form.submit.label.text }}</button>
+</form>
+
+<hr>
+<h2>Add Candidate</h2>
+<form method="POST" action="{{ url_for('main.add_candidate_page') }}">
+    {{ candidate_form.hidden_tag() }}
+    <div class="mb-3">
+        {{ candidate_form.name.label(class="form-label") }}
+        {{ candidate_form.name(class="form-control") }}
+    </div>
+    <div class="mb-3">
+        {{ candidate_form.party.label(class="form-label") }}
+        {{ candidate_form.party(class="form-control") }}
+    </div>
+    <button type="submit" class="btn btn-primary">{{ candidate_form.submit.label.text }}</button>
+</form>
+{% endblock %}

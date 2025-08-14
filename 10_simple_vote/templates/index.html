@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<h2>All Candidates</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Party</th>
+            <th>Votes</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for c in candidates %}
+        <tr>
+            <td>{{ c.name }}</td>
+            <td>{{ c.party }}</td>
+            <td>{{ c.votes|length }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
