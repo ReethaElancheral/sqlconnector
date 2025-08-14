@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}All Products{% endblock %}
+{% block content %}
+<h2>In-Stock Products</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>In Stock</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for p in products %}
+        <tr>
+            <td>{{ p.name }}</td>
+            <td>{{ p.price }}</td>
+            <td>{{ p.description }}</td>
+            <td>{{ 'Yes' if p.in_stock else 'No' }}</td>
+            <td>
+                <a class="btn btn-sm btn-warning" href="{{ url_for('main.edit_product', product_id=p.id) }}">Edit</a>
+                <a class="btn btn-sm btn-danger" href="{{ url_for('main.delete_product', product_id=p.id) }}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
