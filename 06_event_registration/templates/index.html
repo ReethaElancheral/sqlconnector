@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Attendees</h2>
+<a href="{{ url_for('main.add_attendee') }}" class="btn btn-success mb-3">Add Attendee</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th><th>Email</th><th>Event</th><th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for attendee in attendees %}
+        <tr>
+            <td>{{ attendee.name }}</td>
+            <td>{{ attendee.email }}</td>
+            <td>{{ attendee.event_name }}</td>
+            <td>
+                <a href="{{ url_for('main.edit_attendee', id=attendee.id) }}" class="btn btn-warning btn-sm">Edit</a>
+                <a href="{{ url_for('main.delete_attendee', id=attendee.id) }}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
