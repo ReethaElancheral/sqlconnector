@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Edit Application{% endblock %}
+
+{% block content %}
+<h2>Edit Application</h2>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="mb-3">
+        {{ form.name.label(class="form-label") }}
+        {{ form.name(class="form-control") }}
+    </div>
+    <div class="mb-3">
+        {{ form.email.label(class="form-label") }}
+        {{ form.email(class="form-control") }}
+    </div>
+    <div class="mb-3">
+        {{ form.job_title.label(class="form-label") }}
+        {{ form.job_title(class="form-control") }}
+    </div>
+    <div class="mb-3">
+        {{ form.status.label(class="form-label") }}
+        {{ form.status(class="form-select") }}
+    </div>
+    <button type="submit" class="btn btn-primary">{{ form.submit.label.text }}</button>
+</form>
+{% endblock %}
