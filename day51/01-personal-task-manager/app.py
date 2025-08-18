@@ -13,7 +13,8 @@ BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 db_folder = os.path.join(BASE_DIR, "instance")
 os.makedirs(db_folder, exist_ok=True)  # ensure instance folder exists
 db_path = os.path.join(db_folder, "tasks.db")
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///" + db_path
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///" + os.path.join(BASE_DIR, "instance", "tasks.db")
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Initialize extensions
