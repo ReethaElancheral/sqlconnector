@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}My Tasks{% endblock %}
+{% block content %}
+<h2>Your Tasks</h2>
+
+<form method="POST">
+  {{ form.hidden_tag() }}
+  <p>{{ form.title.label }} {{ form.title }}</p>
+  <p>{{ form.due_date.label }} {{ form.due_date }}</p>
+  <p>{{ form.submit }}</p>
+</form>
+
+<ul>
+  {% for task in tasks %}
+    <li>
+      {% if task.completed %}
+        <s>{{ task.title }} (Due: {{ task.due_date }})</s>
+      {% else %}
+        {{ task.title }} (Due: {{ task.due_date }})
+        <a href="{{ url_for('complete_task', task_id=task.id) }}">✅ Complete</a>
+      {% endif %}
+      <a href="{{ url_for('delete_task', task_id=task.id) }}">❌ Delete</a>
+    </li>
+  {% endfor %}
+</ul>
+{% endblock %}
