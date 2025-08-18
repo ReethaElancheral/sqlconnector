@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="form-container">
+    <h2>{{ action }} Note</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.title.label }}<br>
+        {{ form.title(size=64) }}<br>
+        {{ form.content.label }}<br>
+        {{ form.content(rows=8, cols=50) }}<br>
+        {{ form.submit() }}
+    </form>
+</div>
+{% endblock %}
