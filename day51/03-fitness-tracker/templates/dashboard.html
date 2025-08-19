@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="form-container">
+    <h2>Dashboard - Log Workout</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.workout_type.label }} {{ form.workout_type() }}<br>
+        {{ form.steps.label }} {{ form.steps() }}<br>
+        {{ form.hours.label }} {{ form.hours() }}<br>
+        {{ form.submit() }}
+    </form>
+</div>
+{% endblock %}

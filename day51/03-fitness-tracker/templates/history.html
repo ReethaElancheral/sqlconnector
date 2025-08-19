@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Workout History</h2>
+{% if workouts %}
+<table>
+    <tr>
+        <th>Date</th>
+        <th>Workout Type</th>
+        <th>Steps</th>
+        <th>Hours</th>
+    </tr>
+    {% for w in workouts %}
+    <tr>
+        <td>{{ w.date.strftime('%Y-%m-%d %H:%M') }}</td>
+        <td>{{ w.workout_type }}</td>
+        <td>{{ w.steps }}</td>
+        <td>{{ w.hours }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>No workouts logged yet. Go to <a href="{{ url_for('dashboard') }}">Dashboard</a> to add one.</p>
+{% endif %}
+{% endblock %}

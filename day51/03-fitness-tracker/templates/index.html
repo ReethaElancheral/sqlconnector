@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="home">
+    <h1>Welcome to Fitness Log Tracker</h1>
+    {% if not current_user.is_authenticated %}
+    <p><a href="{{ url_for('login') }}">Login</a> or <a href="{{ url_for('register') }}">Register</a> to track your workouts.</p>
+    {% else %}
+    <p>Go to <a href="{{ url_for('dashboard') }}">Dashboard</a> to log your workout.</p>
+    {% endif %}
+</div>
+{% endblock %}
