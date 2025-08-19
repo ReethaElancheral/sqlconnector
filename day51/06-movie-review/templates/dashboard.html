@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ current_user.username }}'s Dashboard</h2>
+<p>Here are your submitted reviews:</p>
+
+{% if current_user.reviews %}
+<table>
+    <tr>
+        <th>Movie</th>
+        <th>Rating</th>
+        <th>Comment</th>
+        <th>Date</th>
+    </tr>
+    {% for r in current_user.reviews %}
+    <tr>
+        <td>{{ r.movie_title }}</td>
+        <td>{{ r.rating }}/5</td>
+        <td>{{ r.comment }}</td>
+        <td>{{ r.date_posted.strftime('%Y-%m-%d %H:%M') }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>You have not submitted any reviews yet. <a href="{{ url_for('add_review') }}">Add your first review</a>.</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="form-container">
+    <h2>Add Review</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.movie_title.label }}<br>
+        {{ form.movie_title() }}<br>
+        {% for err in form.movie_title.errors %}
+            <span class="error">{{ err }}</span>
+        {% endfor %}
+
+        {{ form.rating.label }}<br>
+        {{ form.rating() }}<br>
+        {% for err in form.rating.errors %}
+            <span class="error">{{ err }}</span>
+        {% endfor %}
+
+        {{ form.comment.label }}<br>
+        {{ form.comment(rows=4) }}<br>
+        {% for err in form.comment.errors %}
+            <span class="error">{{ err }}</span>
+        {% endfor %}
+
+        {{ form.submit() }}
+    </form>
+</div>
+{% endblock %}

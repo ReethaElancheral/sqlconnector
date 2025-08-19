@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>All Reviews</h2>
+
+{% if reviews %}
+<table>
+    <tr>
+        <th>Movie</th>
+        <th>Rating</th>
+        <th>Comment</th>
+        <th>Author</th>
+        <th>Date</th>
+    </tr>
+    {% for review in reviews %}
+    <tr>
+        <td>{{ review.movie_title }}</td>
+        <td>{{ review.rating }}/5</td>
+        <td>{{ review.comment }}</td>
+        <td>{{ review.author.username }}</td>
+        <td>{{ review.date_posted.strftime('%Y-%m-%d %H:%M') }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>No reviews yet. Be the first to <a href="{{ url_for('add_review') }}">add a review</a>!</p>
+{% endif %}
+{% endblock %}
