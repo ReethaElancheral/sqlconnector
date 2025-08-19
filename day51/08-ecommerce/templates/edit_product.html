@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Edit Product{% endblock %}
+{% block content %}
+<h2>Edit Product</h2>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <label>Product Name:</label>
+    {{ form.name(class="form-control") }}
+    {% for error in form.name.errors %}
+        <span class="error">{{ error }}</span>
+    {% endfor %}
+
+    <label>Description:</label>
+    {{ form.description(class="form-control") }}
+    {% for error in form.description.errors %}
+        <span class="error">{{ error }}</span>
+    {% endfor %}
+
+    <label>Price:</label>
+    {{ form.price(class="form-control") }}
+    {% for error in form.price.errors %}
+        <span class="error">{{ error }}</span>
+    {% endfor %}
+
+    {{ form.submit(class="btn") }}
+</form>
+{% endblock %}
