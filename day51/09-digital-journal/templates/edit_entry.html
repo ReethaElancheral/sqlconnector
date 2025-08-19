@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}{% if request.path.startswith('/edit') %}Edit{% else %}Add{% endif %} Entry{% endblock %}
+{% block content %}
+<h2>{% if request.path.startswith('/edit') %}Edit{% else %}Add{% endif %} Entry</h2>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <p>{{ form.title.label }}<br>{{ form.title(size=50) }}</p>
+    <p>{{ form.content.label }}<br>{{ form.content(rows=10, cols=50) }}</p>
+    <p>{{ form.submit() }}</p>
+</form>
+{% endblock %}
