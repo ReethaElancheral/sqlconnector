@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Your Quiz Results</h2>
+{% if results %}
+<table>
+    <tr>
+        <th>Date Taken</th>
+        <th>Score</th>
+    </tr>
+    {% for r in results %}
+    <tr>
+        <td>{{ r.date_taken.strftime('%Y-%m-%d %H:%M') }}</td>
+        <td>{{ r.score }}/3</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>No quiz results yet. <a href="{{ url_for('quiz') }}">Take your first quiz</a>.</p>
+{% endif %}
+{% endblock %}
