@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ current_user.username }}'s Dashboard</h2>
+<p>Your submitted bug reports:</p>
+
+{% if current_user.bugs %}
+<table>
+    <tr>
+        <th>Bug Title</th>
+        <th>Description</th>
+        <th>Date</th>
+    </tr>
+    {% for bug in current_user.bugs %}
+    <tr>
+        <td>{{ bug.title }}</td>
+        <td>{{ bug.description }}</td>
+        <td>{{ bug.date_posted.strftime('%Y-%m-%d %H:%M') }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>You have not submitted any bugs yet. <a href="{{ url_for('add_bug') }}">Submit your first bug</a>.</p>
+{% endif %}
+{% endblock %}

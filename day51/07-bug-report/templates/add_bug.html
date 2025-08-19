@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="form-container">
+    <h2>Submit a Bug</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        {{ form.title.label }}<br>
+        {{ form.title() }}<br>
+        {% for err in form.title.errors %}
+            <span class="error">{{ err }}</span>
+        {% endfor %}
+
+        {{ form.description.label }}<br>
+        {{ form.description(rows=5) }}<br>
+        {% for err in form.description.errors %}
+            <span class="error">{{ err }}</span>
+        {% endfor %}
+
+        {{ form.submit() }}
+    </form>
+
+    {% if session.last_bug_title %}
+    <p>Last bug you submitted: <strong>{{ session.last_bug_title }}</strong></p>
+    {% endif %}
+</div>
+{% endblock %}

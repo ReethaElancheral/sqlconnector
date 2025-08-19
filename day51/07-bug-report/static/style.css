@@ -1,0 +1,8 @@
+body { font-family: Roboto, sans-serif; background: #f5f5f5; margin:0; padding:0; }
+.navbar { background: #B285C0; padding: 1rem; color:white; }
+.navbar a { color:white; margin-right:1rem; text-decoration:none; }
+.form-container { max-width:500px; margin:2rem auto; padding:2rem; background:white; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.1);}
+.error { color:#dc3545; font-size:0.9rem; }
+table { width:100%; border-collapse:collapse; margin-top:1rem;}
+th, td { border:1px solid #ddd; padding:0.5rem; text-align:left;}
+th { background:#B285C0; color:white;}
