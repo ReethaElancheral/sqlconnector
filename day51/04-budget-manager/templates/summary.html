@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Expense Summary</h2>
+{% if expenses %}
+<table>
+    <tr>
+        <th>Date</th>
+        <th>Amount</th>
+        <th>Category</th>
+    </tr>
+    {% for e in expenses %}
+    <tr>
+        <td>{{ e.date.strftime('%Y-%m-%d %H:%M') }}</td>
+        <td>{{ e.amount }}</td>
+        <td>{{ e.category }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<p>Total Expenses: {{ total }}</p>
+{% if limit %}
+<p>Monthly Limit: {{ limit }}</p>
+{% endif %}
+{% else %}
+<p>No expenses recorded yet. Go to <a href="{{ url_for('dashboard') }}">Dashboard</a> to add one.</p>
+{% endif %}
+{% endblock %}

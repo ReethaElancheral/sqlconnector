@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="form-container">
+    <h2>Dashboard - Add Expense</h2>
+
+    <form method="POST">
+        {{ expense_form.hidden_tag() }}
+        {{ expense_form.amount.label }} {{ expense_form.amount() }}<br>
+        {{ expense_form.category.label }} {{ expense_form.category() }}<br>
+        {{ expense_form.submit() }}
+    </form>
+
+    <h3>Set Monthly Limit</h3>
+    <form method="POST">
+        {{ limit_form.hidden_tag() }}
+        {{ limit_form.monthly_limit.label }} {{ limit_form.monthly_limit() }}<br>
+        {{ limit_form.submit() }}
+    </form>
+</div>
+{% endblock %}
