@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Courses{% endblock %}
+{% block content %}
+<h2>Available Courses</h2>
+<ul>
+{% for course in courses %}
+    <li>
+        <strong>{{ course.name }}</strong>: {{ course.description }}
+        {% if course.id in enrolled %}
+            <em>(Enrolled)</em>
+        {% else %}
+            <a href="{{ url_for('enroll', course_id=course.id) }}">Enroll</a>
+        {% endif %}
+    </li>
+{% endfor %}
+</ul>
+{% endblock %}
