@@ -1,0 +1,8 @@
+body { font-family: Arial, sans-serif; margin: 20px; }
+nav a { margin-right: 10px; text-decoration: none; color: #6F145F; font-weight: bold; }
+.products { display: flex; flex-wrap: wrap; gap: 15px; }
+.product-card { border: 1px solid #ccc; padding: 15px; width: 200px; border-radius: 8px; }
+.btn { background-color: #B285C0; color: white; padding: 5px 10px; border: none; cursor: pointer; border-radius: 5px; text-decoration: none; }
+.btn:hover { background-color: #6F145F; }
+.flash { color: green; margin: 5px 0; }
+.price { font-weight: bold; color: #DDBAE7; }

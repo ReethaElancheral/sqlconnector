@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Products</h1>
+<div class="products">
+{% for p in products %}
+<div class="product-card">
+<h3>{{p.name}}</h3>
+<p>{{p.description}}</p>
+<p class="price">₹{{p.price}}</p>
+{% if current_user.is_authenticated %}
+<form action="{{ url_for('main.add_to_cart', product_id=p.id) }}" method="POST">
+<button class="btn" type="submit">Add to Cart</button>
+</form>
+{% else %}
+<a class="btn" href="{{ url_for('auth.login') }}">Login to add to cart</a>
+{% endif %}
+</div>
+{% endfor %}
+</div>
+{% endblock %}
