@@ -1,0 +1,24 @@
+:root{--bg:#0f172a;--fg:#e2e8f0;--muted:#94a3b8;--accent:#6366f1;--good:#16a34a;--bad:#ef4444;}
+*{box-sizing:border-box} body{margin:0;font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--fg)}
+.container{max-width:1080px;margin:0 auto;padding:1rem}
+.navbar{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.25rem;border-bottom:1px solid #1f2937;}
+.brand{font-weight:700;text-decoration:none;color:var(--fg);}
+.nav-links a{margin-left:1rem;text-decoration:none;color:var(--fg);opacity:.9}
+.nav-links .badge{background:var(--accent);padding:.1rem .4rem;border-radius:.5rem;font-size:.8rem;margin-left:.25rem}
+.flashes{margin:1rem 0}
+.flash{padding:.75rem 1rem;border-radius:.5rem;margin:.25rem 0;background:#111827}
+.flash.success{border:1px solid var(--good)} .flash.info{border:1px solid #3b82f6} .flash.danger{border:1px solid var(--bad)}
+.hero{padding:2rem 1rem;background:#111827;border-radius:1rem;margin-bottom:1rem}
+.btn{background:var(--accent);border:none;color:white;padding:.6rem 1rem;border-radius:.6rem;text-decoration:none;cursor:pointer;display:inline-block}
+.btn.small{padding:.35rem .6rem;font-size:.9rem} .btn.danger{background:var(--bad)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}
+.card{background:#111827;border:1px solid #1f2937;border-radius:1rem;padding:1rem}
+.card img{width:100%;height:160px;object-fit:cover;border-radius:.8rem}
+.price{font-weight:700;margin:.25rem 0}
+.desc{color:var(--muted);font-size:.9rem}
+form .form-row{display:flex;flex-direction:column;margin:.5rem 0}
+.input{padding:.5rem .6rem;border-radius:.5rem;border:1px solid #334155;background:#0b1220;color:var(--fg)}
+table.table{width:100%;border-collapse:collapse;background:#0b1220;border-radius:.6rem;overflow:hidden}
+table.table th, table.table td{padding:.6rem .5rem;border-bottom:1px solid #1f2937;text-align:left}
+.admin-bar{display:flex;align-items:center;justify-content:space-between;margin:1rem 0}
+.total{margin-top:1rem;font-size:1.25rem}
